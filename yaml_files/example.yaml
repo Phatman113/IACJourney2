@@ -30,7 +30,7 @@ spec:
     app: nginx
   ports:
     - protocol: TCP
-      port: 80
+      port: 8080
       targetPort: 80
   type: LoadBalancer
 ---
@@ -44,20 +44,12 @@ spec:
     http:
       paths:
       - pathType: Prefix
-        path: "/api"
+        path: "/"
         backend:
           service:
-            name: api-service
+            name: rcw-nginx-service
             port:
               number: 8080
-      - pathType: Prefix
-        path: "/web"
-        backend:
-          service:
-            name: web-service
-            port:
-              number: 80
-
 
 
 
